@@ -1,48 +1,25 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
-    </script>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>文件生成软件 - 更新日志</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
-        .stats-container {
-            background-color: rgba(52, 152, 219, 0.8);
-            color: white;
-            padding: 15px;
-            border-radius: 20px;
-            font-size: 14px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            max-width: 80%;
-            text-align: center;
-            margin: 20px auto; /* Center the container horizontally */
-        }
-        
-        .stats-container:hover {
-            background-color: rgba(41, 128, 185, 1);
-            transform: translateY(-3px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-        }
-        
-        .stat-item {
-            margin-bottom: 10px;
-        }
-        
-        .stat-item:last-child {
-            margin-bottom: 0;
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --background-color: #f0f2f5;
+            --text-color: #333;
+            --shadow-color: rgba(0,0,0,0.1);
         }
         body {
-            font-family: 'Roboto', Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             margin: 0;
-            padding: 0;
-            background-color: #f0f2f5;
-            color: #333;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
         }
         .navbar {
             position: fixed;
@@ -51,8 +28,7 @@
             width: 100%;
             z-index: 1000;
             background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px var(--shadow-color);
         }
         .navbar-container {
             max-width: 1200px;
@@ -65,7 +41,7 @@
         .navbar-logo {
             font-size: 24px;
             font-weight: bold;
-            color: #2c3e50;
+            color: var(--secondary-color);
             text-decoration: none;
         }
         .navbar ul {
@@ -78,7 +54,7 @@
             margin-left: 30px;
         }
         .navbar ul li a {
-            color: #2c3e50;
+            color: var(--secondary-color);
             text-decoration: none;
             font-size: 16px;
             transition: .3s;
@@ -92,19 +68,20 @@
             left: 0;
             width: 0;
             height: 2px;
-            background-color: #3498db;
+            background-color: var(--primary-color);
             transition: width 0.3s ease;
         }
-        .navbar ul li a:hover::after {
+        .navbar ul li a:hover::after,
+        .navbar ul li a.active::after {
             width: 100%;
         }
         .container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 120px auto 50px;
             background: #fff;
             padding: 30px;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px var(--shadow-color);
             animation: fadeIn 1s ease-out;
         }
         @keyframes fadeIn {
@@ -112,7 +89,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
         h1, h2 {
-            color: #2c3e50;
+            color: var(--secondary-color);
             text-align: center;
             margin-bottom: 30px;
         }
@@ -120,20 +97,54 @@
             font-size: 2.5em;
             margin-top: 0;
         }
-        .changelog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+        .changelog-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .changelog-timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
         }
         .changelog-item {
-            background: #fff;
+            padding: 20px 30px;
+            position: relative;
+            background-color: inherit;
+            width: calc(50% - 30px);
+        }
+        .changelog-item:nth-child(even) {
+            left: 50%;
+        }
+        .changelog-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: #fff;
+            border: 4px solid var(--primary-color);
+            top: 22px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .changelog-item:nth-child(even)::after {
+            left: -10px;
+        }
+        .changelog-content {
             padding: 20px;
+            background-color: #fff;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px var(--shadow-color);
         }
         .changelog-version {
             font-weight: bold;
-            color: #2c3e50;
+            color: var(--secondary-color);
             margin-bottom: 10px;
         }
         .changelog-date {
@@ -147,30 +158,89 @@
         }
         .changelog-list li {
             margin-bottom: 5px;
-            padding-left: 20px;
+            padding-left: 25px;
             position: relative;
         }
-        .changelog-list li:before {
-            content: "•";
-            color: #3498db;
+        .changelog-list li::before {
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
             position: absolute;
             left: 0;
         }
+        .changelog-list li.new::before {
+            content: '\f067';
+            color: #27ae60;
+        }
+        .changelog-list li.fix::before {
+            content: '\f0ad';
+            color: #e74c3c;
+        }
+        .changelog-list li.improve::before {
+            content: '\f044';
+            color: #f39c12;
+        }
+        footer {
+            background-color: var(--secondary-color);
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        .stat-item {
+            display: flex;
+            align-items: center;
+            margin: 5px 15px;
+            font-size: 14px;
+        }
+        .stat-item i {
+            margin-right: 10px;
+            font-size: 16px;
+        }
         @media (max-width: 768px) {
-            .navbar-container {
+            .navbar-container, .navbar ul {
                 flex-direction: column;
                 align-items: flex-start;
             }
-            .navbar ul {
-                margin-top: 15px;
-            }
             .navbar ul li {
                 margin-left: 0;
-                margin-right: 20px;
+                margin-bottom: 10px;
             }
             .container {
                 margin: 100px 20px 20px;
                 padding: 20px;
+            }
+            .changelog-timeline::after {
+                left: 31px;
+            }
+            .changelog-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            .changelog-item:nth-child(even) {
+                left: 0;
+            }
+            .changelog-item::after, .changelog-item:nth-child(even)::after {
+                left: 21px;
+            }
+            .stats-container {
+                flex-direction: column;
+            }
+            .stat-item {
+                margin: 5px 0;
             }
         }
     </style>
@@ -183,7 +253,7 @@
                 <li><a href="index.html#introduce">介绍</a></li>
                 <li><a href="index.html#overview">概览</a></li>
                 <li><a href="index.html#support">支持</a></li>
-                <li><a href="#">更新日志</a></li>
+                <li><a href="#" class="active">更新日志</a></li>
                 <li><a href="download.html">软件下载</a></li>
             </ul>
         </div>
@@ -191,25 +261,39 @@
 
     <div class="container">
         <h1>更新日志</h1>
-        <div class="changelog-grid">
+        <div class="changelog-timeline">
             <div class="changelog-item">
-                <div class="changelog-version">版本 0.1.0</div>
-                <div class="changelog-date">发布日期：2024年9月10日</div>
-                <ul class="changelog-list">
-                    <li>发布第一个测试版本</li>
-                </ul>
+                <div class="changelog-content">
+                    <div class="changelog-version">版本 0.1.0</div>
+                    <div class="changelog-date">发布日期：2024年9月10日</div>
+                    <ul class="changelog-list">
+                        <li class="new">发布第一个测试版本</li>
+                        <li class="improve">优化用户界面</li>
+                        <li class="fix">修复已知bug</li>
+                    </ul>
+                </div>
             </div>
         </div>
-     <div class="stats-container">
-        <div id="busuanzi_container_site_pv" class="stat-item">
-            本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
-        </div>
-        <div id="busuanzi_container_site_uv" class="stat-item">
-            本站访客数 <span id="busuanzi_value_site_uv"></span> 人次
-        </div>
-        <div id="busuanzi_container_page_pv" class="stat-item">
-            本页访问量 <span id="busuanzi_value_page_pv"></span> 次
-        </div>
     </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="stats-container">
+                <div id="busuanzi_container_site_pv" class="stat-item">
+                    <i class="fas fa-eye"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+                </div>
+                <div id="busuanzi_container_site_uv" class="stat-item">
+                    <i class="fas fa-users"></i>
+                    本站访客数 <span id="busuanzi_value_site_uv"></span> 人次
+                </div>
+                <div id="busuanzi_container_page_pv" class="stat-item">
+                    <i class="fas fa-file-alt"></i>
+                    本页访问量 <span id="busuanzi_value_page_pv"></span> 次
+                </div>
+            </div>
+            <p>&copy; 2024 文件生成软件. 保留所有权利。</p>
+        </div>
+    </footer>
 </body>
 </html>
