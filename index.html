@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
-    </script>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>测试点生成软件</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        .visit-count {
+        。visit-count {
             position: fixed;
             bottom: 20px;
             right: 20px;
@@ -27,7 +26,7 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.3);
         }
         body {
-            font-family: 'Roboto', Arial, sans-serif;
+            font-family: 'Roboto'， Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f0f2f5;
@@ -178,6 +177,36 @@
                 padding: 20px;
             }
         }
+        footer {
+            background-color: var(--secondary-color);
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        .stat-item {
+            display: flex;
+            align-items: center;
+            margin: 5px 15px;
+            font-size: 14px;
+        }
+        .stat-item i {
+            margin-right: 10px;
+            font-size: 16px;
+        }
     </style>
 </head>
 <body>
@@ -216,8 +245,24 @@
             <p>qq：2032462134</p>
         </div>
     </div>
-    <div id="busuanzi_container_site_pv" class="visit-count">
-    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
-    </div>
+    <footer>
+        <div class="footer-content">
+            <div class="stats-container">
+                <div id="busuanzi_container_site_pv" class="stat-item">
+                    <i class="fas fa-eye"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+                </div>
+                <div id="busuanzi_container_site_uv" class="stat-item">
+                    <i class="fas fa-users"></i>
+                    本站访客数 <span id="busuanzi_value_site_uv"></span> 人次
+                </div>
+                <div id="busuanzi_container_page_pv" class="stat-item">
+                    <i class="fas fa-file-alt"></i>
+                    本页访问量 <span id="busuanzi_value_page_pv"></span> 次
+                </div>
+            </div>
+            <p>&copy; 2024 文件生成软件. 保留所有权利。</p>
+        </div>
+    </footer>
 </body>
 </html>
