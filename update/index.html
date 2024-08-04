@@ -8,10 +8,11 @@
     <title>文件生成软件 - 更新日志</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        .visit-count {
+        .stat-container {
             position: fixed;
             bottom: 20px;
-            right: 20px;
+            left: 50%;
+            transform: translateX(-50%);
             background-color: rgba(52, 152, 219, 0.8);
             color: white;
             padding: 10px 15px;
@@ -19,11 +20,12 @@
             font-size: 14px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
+            margin-bottom: 10px;
         }
         
-        .visit-count:hover {
+        .stat-container:hover {
             background-color: rgba(41, 128, 185, 1);
-            transform: translateY(-3px);
+            transform: translateX(-50%) translateY(-3px);
             box-shadow: 0 4px 8px rgba(0,0,0,0.3);
         }
         body {
@@ -189,9 +191,22 @@
                 </ul>
             </div>
         </div>
+    <div class="stat-container">
+        <div id="busuanzi_container_site_pv">
+            本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+        </div>
     </div>
-    <div id="busuanzi_container_site_pv" class="visit-count">
-    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
-</div>
+
+    <div class="stat-container">
+        <div id="busuanzi_container_site_uv">
+            本站访客数 <span id="busuanzi_value_site_uv"></span> 人次
+        </div>
+    </div>
+
+    <div class="stat-container">
+        <div id="busuanzi_container_page_pv">
+            本页访问量 <span id="busuanzi_value_page_pv"></span> 次
+        </div>
+    </div>
 </body>
 </html>
