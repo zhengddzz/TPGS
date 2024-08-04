@@ -209,6 +209,26 @@
             margin-right: 10px;
             font-size: 16px;
         }
+        .changelog-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .toggle-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .toggle-btn:hover {
+            background-color: #2980b9;
+        }
+        .changelog-list.collapsed {
+            display: none;
+        }
         @media (max-width: 768px) {
             .navbar-container, .navbar ul {
                 flex-direction: column;
@@ -264,8 +284,13 @@
         <div class="changelog-timeline">
             <div class="changelog-item">
                 <div class="changelog-content">
-                    <div class="changelog-version">版本 0.1.0</div>
-                    <div class="changelog-date">发布日期：2024年9月10日</div>
+                    <div class="changelog-header">
+                        <div>
+                            <div class="changelog-version">版本 0.1.0</div>
+                            <div class="changelog-date">发布日期：2024年9月10日</div>
+                        </div>
+                        <button class="toggle-btn">折叠</button>
+                    </div>
                     <ul class="changelog-list">
                         <li class="new">发布第一个测试版本</li>
                         <li class="improve">优化用户界面</li>
@@ -273,6 +298,23 @@
                     </ul>
                 </div>
             </div>
+            <div class="changelog-item">
+                <div class="changelog-content">
+                    <div class="changelog-header">
+                        <div>
+                            <div class="changelog-version">版本 0.0.9</div>
+                            <div class="changelog-date">发布日期：2024年8月25日</div>
+                        </div>
+                        <button class="toggle-btn">展开</button>
+                    </div>
+                    <ul class="changelog-list collapsed">
+                        <li class="new">添加新功能A</li>
+                        <li class="improve">改进功能B</li>
+                        <li class="fix">修复问题C</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 可以继续添加更多版本 -->
         </div>
     </div>
 
@@ -295,5 +337,26 @@
             <p>&copy; 2024 文件生成软件. 保留所有权利。</p>
         </div>
     </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggleBtns = document.querySelectorAll('.toggle-btn');
+        
+        toggleBtns.forEach((btn, index) => {
+            const list = btn.closest('.changelog-content').querySelector('.changelog-list');
+            
+            // 默认只显示最新版本的详细信息
+            if (index === 0) {
+                list.classList.remove('collapsed');
+                btn.textContent = '折叠';
+            }
+            
+            btn.addEventListener('click', function() {
+                list.classList.toggle('collapsed');
+                btn.textContent = list.classList.contains('collapsed') ? '展开' : '折叠';
+            });
+        });
+    });
+    </script>
 </body>
 </html>
