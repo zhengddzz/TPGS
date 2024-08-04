@@ -8,6 +8,9 @@
     <title>测试点生成软件下载</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --secondary-color: #2c3e50;
+        }
         body {
             font-family: 'Roboto', Arial, sans-serif;
             margin: 0;
@@ -132,6 +135,36 @@
                 padding: 20px;
             }
         }
+        footer {
+            background-color: var(--secondary-color);
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        .stat-item {
+            display: flex;
+            align-items: center;
+            margin: 5px 15px;
+            font-size: 14px;
+        }
+        .stat-item i {
+            margin-right: 10px;
+            font-size: 16px;
+        }
     </style>
 </head>
 <body>
@@ -155,11 +188,25 @@
             <p id="countdown"></p>
         </div>
     </div>
-
-    <span id="busuanzi_container_site_pv">
-        本站总访问量<span id="busuanzi_value_site_pv"></span>次
-    </span>
-
+    <footer>
+        <div class="footer-content">
+            <div class="stats-container">
+                <div id="busuanzi_container_site_pv" class="stat-item">
+                    <i class="fas fa-eye"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+                </div>
+                <div id="busuanzi_container_site_uv" class="stat-item">
+                    <i class="fas fa-users"></i>
+                    本站访客数 <span id="busuanzi_value_site_uv"></span> 人次
+                </div>
+                <div id="busuanzi_container_page_pv" class="stat-item">
+                    <i class="fas fa-file-alt"></i>
+                    本页访问量 <span id="busuanzi_value_page_pv"></span> 次
+                </div>
+            </div>
+            <p>&copy; 2024 文件生成软件. 保留所有权利。</p>
+        </div>
+    </footer>
     <script>
         // 设置下载链接（请替换为实际的下载链接）
         var downloadUrl = "https://tpgs.zhengddzz.fun/v2-134026c2170f8cd042703e9e8b25fffc_1440w.png";
