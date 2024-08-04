@@ -8,25 +8,34 @@
     <title>文件生成软件 - 更新日志</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        .stat-container {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+        .stats-container {
             background-color: rgba(52, 152, 219, 0.8);
             color: white;
-            padding: 10px 15px;
+            padding: 15px;
             border-radius: 20px;
             font-size: 14px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 80%;
+            text-align: center;
+            margin: 20px auto; /* Center the container horizontally */
+        }
+        
+        .stats-container:hover {
+            background-color: rgba(41, 128, 185, 1);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        
+        .stat-item {
             margin-bottom: 10px;
         }
         
-        .stat-container:hover {
-            background-color: rgba(41, 128, 185, 1);
-            transform: translateX(-50%) translateY(-3px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        .stat-item:last-child {
+            margin-bottom: 0;
         }
         body {
             font-family: 'Roboto', Arial, sans-serif;
@@ -191,20 +200,14 @@
                 </ul>
             </div>
         </div>
-    <div class="stat-container">
-        <div id="busuanzi_container_site_pv">
+     <div class="stats-container">
+        <div id="busuanzi_container_site_pv" class="stat-item">
             本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
         </div>
-    </div>
-
-    <div class="stat-container">
-        <div id="busuanzi_container_site_uv">
+        <div id="busuanzi_container_site_uv" class="stat-item">
             本站访客数 <span id="busuanzi_value_site_uv"></span> 人次
         </div>
-    </div>
-
-    <div class="stat-container">
-        <div id="busuanzi_container_page_pv">
+        <div id="busuanzi_container_page_pv" class="stat-item">
             本页访问量 <span id="busuanzi_value_page_pv"></span> 次
         </div>
     </div>
