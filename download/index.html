@@ -182,8 +182,6 @@
                 countdownElement.textContent = "页面将在 " + secondsLeft + " 秒后关闭...";
                 secondsLeft--;
                 if (secondsLeft < 0) {
-                    clearInterval(countdownInterval);
-                    alert("下载已开始，页面现在将关闭。");
                     window.close(); // 尝试关闭窗口
                 }
             }, 1000);
