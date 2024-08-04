@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>文件生成软件下载</title>
+    <title>测试点生成软件下载</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -12,6 +14,60 @@
             padding: 0;
             background-color: #f0f2f5;
             color: #333;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+        .navbar-logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+            text-decoration: none;
+        }
+        .navbar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        .navbar ul li {
+            margin-left: 30px;
+        }
+        .navbar ul li a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-size: 16px;
+            transition: .3s;
+            padding: 10px 0;
+            position: relative;
+        }
+        .navbar ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #3498db;
+            transition: width 0.3s ease;
+        }
+        .navbar ul li a:hover::after {
+            width: 100%;
         }
         .container {
             max-width: 800px;
@@ -59,25 +115,59 @@
         #downloadLink:hover {
             text-decoration: underline;
         }
+        @media (max-width: 768px) {
+            .navbar-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .navbar ul {
+                margin-top: 15px;
+            }
+            .navbar ul li {
+                margin-left: 0;
+                margin-right: 20px;
+            }
+            .container {
+                margin: 100px 20px 20px;
+                padding: 20px;
+            }
+        }
     </style>
 </head>
 <body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="navbar-logo">文件生成器</a>
+            <ul>
+                <li><a href="introduce">介绍</a></li>
+                <li><a href="overview">概览</a></li>
+                <li><a href="support">支持我们</a></li>
+                <li><a href="update">更新日志</a></li>
+                <li><a href="download">软件下载</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container">
-        <h1>文件生成软件下载</h1>
+        <h1>测试点生成软件下载</h1>
         <div class="download">
             <p id="message"></p>
             <p id="countdown"></p>
         </div>
     </div>
 
+    <span id="busuanzi_container_site_pv">
+        本站总访问量<span id="busuanzi_value_site_pv"></span>次
+    </span>
+
     <script>
         // 设置下载链接（请替换为实际的下载链接）
-        var downloadUrl = "https://tpgs.zhengddzz.fun/v2-134026c2170f8cd042703e9e8b25fffc_1440w.png";
+        var downloadUrl = "https://example.com/your-software.zip";
         
         function startDownload() {
             var link = document.createElement('a');
             link.href = downloadUrl;
-            link.download = 'file-generator-software.zip'; // 下载文件的名称
+            link.download = 'test-point-generator.zip'; // 下载文件的名称
             link.style.display = 'none';
             document.body.appendChild(link);
             link.click();
