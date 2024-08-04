@@ -3,12 +3,29 @@
 <head>
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
     </script>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>测试点生成软件</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
+        .visit-count {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: rgba(52, 152, 219, 0.8);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .visit-count:hover {
+            background-color: rgba(41, 128, 185, 1);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
         body {
             font-family: 'Roboto', Arial, sans-serif;
             margin: 0;
