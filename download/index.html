@@ -42,20 +42,6 @@
             border-radius: 10px;
             transition: all 0.3s ease;
         }
-        .download a {
-            display: inline-block;
-            background: #3498db;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            margin-right: 10px;
-        }
-        .download a:hover {
-            background: #2980b9;
-            transform: scale(1.05);
-        }
         #message {
             margin-top: 20px;
             font-weight: bold;
@@ -65,15 +51,20 @@
             font-weight: bold;
             color: #e74c3c;
         }
+        #downloadLink {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        #downloadLink:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>文件生成软件下载</h1>
         <div class="download">
-            <p>选择下载方式：</p>
-            <a href="#" id="autoDownloadLink">自动下载</a>
-            <a href="#" id="manualDownloadLink">手动下载</a>
             <p id="message"></p>
             <p id="countdown"></p>
         </div>
@@ -81,24 +72,21 @@
 
     <script>
         // 设置下载链接（请替换为实际的下载链接）
-        var downloadUrl = "https://tpgs.zhengddzz.fun/v2-134026c2170f8cd042703e9e8b25fffc_1440w.png";
+        var downloadUrl = "https://example.com/your-software.zip";
         
-        function startDownload(isAuto) {
-            if (isAuto) {
-                var link = document.createElement('a');
-                link.href = downloadUrl;
-                link.download = 'file-generator-software.zip'; // 下载文件的名称
-                link.style.display = 'none';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            }
-            document.getElementById('message').textContent = isAuto ? 
-                "自动下载已开始，如果没有反应，请尝试手动下载。" : 
-                "手动下载已开始，如果没有反应，请检查浏览器设置。";
+        function startDownload() {
+            var link = document.createElement('a');
+            link.href = downloadUrl;
+            link.download = 'file-generator-software.zip'; // 下载文件的名称
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            document.getElementById('message').innerHTML = "自动下载已开始，如果没有反应，请<a id='downloadLink' href='" + downloadUrl + "'>点击此处下载</a>。";
             
             // 开始3秒倒计时
-            var secondsLeft = 5;
+            var secondsLeft = 3;
             var countdownElement = document.getElementById('countdown');
             var countdownInterval = setInterval(function() {
                 countdownElement.textContent = "页面将在 " + secondsLeft + " 秒后关闭...";
@@ -111,23 +99,8 @@
             }, 1000);
         }
 
-        // 自动下载功能
-        document.getElementById('autoDownloadLink').addEventListener('click', function(e) {
-            e.preventDefault();
-            startDownload(true);
-        });
-
-        // 手动下载功能
-        document.getElementById('manualDownloadLink').href = downloadUrl;
-        document.getElementById('manualDownloadLink').addEventListener('click', function(e) {
-            e.preventDefault();
-            startDownload(false);
-        });
-
         // 页面加载完成后自动触发下载
-        window.onload = function() {
-            document.getElementById('autoDownloadLink').click();
-        };
+        window.onload = startDownload;
     </script>
 </body>
 </html>
