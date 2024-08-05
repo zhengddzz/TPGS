@@ -157,31 +157,75 @@
         }
         footer {
             background-color: #2c3e50;
-            color: #ffffff; /* 将文本颜色改为白色 */
+            color: #ffffff;
             padding: 40px 0;
             margin-top: 50px;
         }
-        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .footer-sections {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        .footer-section {
+            flex: 1;
+            margin-right: 30px;
+            margin-bottom: 20px;
+            min-width: 200px;
+        }
+        .footer-section:last-child {
+            margin-right: 0;
+        }
         .footer-section h3 {
-            color: #3498db; /* 保持标题颜色不变 */
+            color: #3498db;
             font-size: 18px;
             margin-bottom: 15px;
         }
-        
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
         .footer-section ul li a {
-            color: #ffffff; /* 将链接颜色改为白色 */
+            color: #ffffff;
             text-decoration: none;
             transition: color 0.3s ease;
         }
-        
         .footer-section ul li a:hover {
-            color: #3498db; /* 保持悬停颜色不变 */
+            color: #3498db;
         }
-        
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            padding: 20px 0;
+            border-top: 1px solid #34495e;
+            border-bottom: 1px solid #34495e;
+        }
+        .stat-item {
+            display: flex;
+            align-items: center;
+            margin: 10px 20px;
+            font-size: 14px;
+            color: #ffffff;
+        }
+        .stat-item i {
+            margin-right: 10px;
+            font-size: 18px;
+            color: #3498db;
+        }
         .copyright {
             text-align: center;
             font-size: 14px;
-            color: #ffffff; /* 将版权信息颜色改为白色 */
+            color: #ffffff;
         }
         @media (max-width: 768px) {
             .navbar-container {
