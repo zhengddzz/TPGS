@@ -258,6 +258,77 @@ footer {
     color: #ffffff;
 }
 
+.changelog-timeline {
+    margin-top: 30px;
+}
+
+.changelog-item {
+    margin-bottom: 30px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.changelog-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.changelog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.changelog-version {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.changelog-date {
+    font-size: 0.9em;
+    color: #777;
+}
+
+.changelog-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.changelog-list li {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.changelog-list li:before {
+    content: "•";
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+}
+
+.toggle-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.toggle-btn:hover {
+    background: var(--hover-color);
+}
+
+.collapsed {
+    display: none;
+}
+
 @media (max-width: 768px) {
     .navbar-container {
         flex-direction: column;
