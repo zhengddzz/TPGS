@@ -4,19 +4,406 @@
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>测试点生成软件</title>
+    <title>测试点生成软件 - 更新日志</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --hover-color: #2980b9;
+        }
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: var(--secondary-color);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+        .navbar-logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .navbar-logo:hover {
+            color: var(--primary-color);
+        }
+        .navbar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        .navbar ul li {
+            margin-left: 30px;
+        }
+        .navbar ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: .3s;
+            padding: 10px 0;
+            position: relative;
+        }
+        .navbar ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        .navbar ul li a:hover {
+            color: var(--primary-color);
+        }
+        .navbar ul li a:hover::after {
+            width: 100%;
+        }
+        .container {
+            max-width: 800px;
+            margin: 120px auto 50px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            animation: fadeIn 1s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        h1, h2 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-top: 0;
+        }
+        p {
+            line-height: 1.8;
+            color: #34495e;
+        }
+        .features, .download, .contact {
+            margin-top: 40px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        .features:hover, .download:hover, .contact:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .features ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            transition: all 0.3s ease;
+        }
+        .features li:last-child {
+            border-bottom: none;
+        }
+        .features li:before {
+            content: "✓";
+            color: #27ae60;
+            margin-right: 10px;
+        }
+        .features li:hover {
+            transform: translateX(10px);
+            color: #2980b9;
+        }
+        .download a {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .download a:hover {
+            background: #2980b9;
+            transform: scale(1.05);
+        }
+        .contact p {
+            margin: 5px 0;
+        }
+        footer {
+            background-color: #2c3e50;
+            color: #ffffff;
+            padding: 60px 0 30px;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-sections {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            margin-right: 40px;
+            margin-bottom: 30px;
+            min-width: 250px;
+        }
+        
+        .footer-section:last-child {
+            margin-right: 0;
+        }
+        
+        .footer-section h3 {
+            color: #3498db;
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #3498db;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-section ul li a {
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-section ul li a i {
+            margin-right: 10px;
+            font-size: 12px;
+        }
+        
+        .footer-section ul li a:hover {
+            color: #3498db;
+        }
+        
+        .footer-section p {
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        
+        .social-icons {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #34495e;
+            color: #ffffff;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background-color: #3498db;
+            transform: translateY(-3px);
+        }
+        
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            padding: 30px 0;
+            border-top: 1px solid #34495e;
+            border-bottom: 1px solid #34495e;
+        }
+        
+        .stat-item {
+            display: flex;
+            align-items: center;
+            margin: 10px 30px;
+            font-size: 16px;
+            color: #ecf0f1;
+        }
+        
+        .stat-item i {
+            margin-right: 15px;
+            font-size: 24px;
+            color: #3498db;
+        }
+        
+        .copyright {
+            text-align: center;
+            font-size: 14px;
+            color: #bdc3c7;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .footer-sections {
+                flex-direction: column;
+            }
+            
+            .footer-section {
+                margin-right: 0;
+                margin-bottom: 40px;
+            }
+            
+            .stats-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .stat-item {
+                margin: 15px 0;
+            }
+        }
+        .stat-item i {
+            margin-right: 10px;
+            font-size: 18px;
+            color: #3498db;
+        }
+        .copyright {
+            text-align: center;
+            font-size: 14px;
+            color: #ffffff;
+        }
+        @media (max-width: 768px) {
+            .navbar-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .navbar ul {
+                margin-top: 15px;
+            }
+            .navbar ul li {
+                margin-left: 0;
+                margin-right: 20px;
+            }
+            .container {
+                margin: 100px 20px 20px;
+                padding: 20px;
+            }
+            .footer-sections {
+                flex-direction: column;
+            }
+            .footer-section {
+                margin-right: 0;
+                margin-bottom: 30px;
+            }
+        .update-log {
+            margin-top: 40px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .update-log:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .update-item {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .update-item:last-child {
+            border-bottom: none;
+        }
+
+        .update-version {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+
+        .update-date {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+
+        .update-details ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .update-details li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .update-details li:before {
+            content: "•";
+            color: #3498db;
+            position: absolute;
+            left: 0;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="navbar-container">
-            <a href="https://tpgs.zhengddzz.fun/" class="navbar-logo">测试点生成软件</a>
+            <a href="#" class="navbar-logo">测试点生成软件</a>
             <ul>
-                <li><a href="#introduce"><i class="fas fa-info-circle"></i> 介绍</a></li>
-                <li><a href="#overview"><i class="fas fa-eye"></i> 概览</a></li>
-                <li><a href="#support"><i class="fas fa-hands-helping"></i> 支持我们</a></li>
+                <li><a href="introduce"><i class="fas fa-info-circle"></i> 介绍</a></li>
+                <li><a href="overview"><i class="fas fa-eye"></i> 概览</a></li>
+                <li><a href="support"><i class="fas fa-hands-helping"></i> 支持我们</a></li>
                 <li><a href="update"><i class="fas fa-history"></i> 更新日志</a></li>
                 <li><a href="download" target="_blank"><i class="fas fa-download"></i> 软件下载</a></li>
                 <li><a href="https://help.zhengddzz.fun/" target="_blank"><i class="fas fa-question-circle"></i> 帮助文档</a></li>
@@ -26,40 +413,54 @@
 
     <div class="container">
         <h1>更新日志</h1>
-        <div class="changelog-timeline">
-            <div class="changelog-item">
-                <div class="changelog-content">
-                    <div class="changelog-header">
-                        <div>
-                            <div class="changelog-version">版本 0.1.0</div>
-                            <div class="changelog-date">发布日期：2024年9月10日</div>
-                        </div>
-                        <button class="toggle-btn">折叠</button>
-                    </div>
-                    <ul class="changelog-list">
-                        <li class="new">发布第一个测试版本</li>
-                        <li class="improve">优化用户界面</li>
-                        <li class="fix">修复已知bug</li>
+        <p>查看测试点生成软件的最新更新和改进。我们致力于不断优化和完善软件功能，为用户提供更好的体验。</p>
+
+        <div class="update-log">
+            <div class="update-item">
+                <div class="update-version">版本 1.2.0</div>
+                <div class="update-date">发布日期：2024年8月1日</div>
+                <div class="update-details">
+                    <ul>
+                        <li>新增自定义程序模板支持</li>
+                        <li>优化测试点文件生成速度，提升30%效率</li>
+                        <li>修复了在特定情况下可能导致的崩溃问题</li>
+                        <li>改进用户界面，提升操作流畅度</li>
                     </ul>
                 </div>
             </div>
-            <div class="changelog-item">
-                <div class="changelog-content">
-                    <div class="changelog-header">
-                        <div>
-                            <div class="changelog-version">版本 0.0.9</div>
-                            <div class="changelog-date">发布日期：2024年8月25日</div>
-                        </div>
-                        <button class="toggle-btn">展开</button>
-                    </div>
-                    <ul class="changelog-list collapsed">
-                        <li class="new">添加新功能A</li>
-                        <li class="improve">改进功能B</li>
-                        <li class="fix">修复问题C</li>
+            <div class="update-item">
+                <div class="update-version">版本 1.1.5</div>
+                <div class="update-date">发布日期：2024年7月15日</div>
+                <div class="update-details">
+                    <ul>
+                        <li>增加对多种新文件格式的支持</li>
+                        <li>修复了一些小bug</li>
+                        <li>优化了内存使用</li>
                     </ul>
                 </div>
             </div>
-            <!-- 可以继续添加更多版本 -->
+            <div class="update-item">
+                <div class="update-version">版本 1.1.0</div>
+                <div class="update-date">发布日期：2024年6月30日</div>
+                <div class="update-details">
+                    <ul>
+                        <li>新增批量生成功能，现可一次生成多达200个测试点</li>
+                        <li>优化了用户界面，提升用户体验</li>
+                        <li>增加了详细的使用教程</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="update-item">
+                <div class="update-version">版本 1.0.0</div>
+                <div class="update-date">发布日期：2024年6月1日</div>
+                <div class="update-details">
+                    <ul>
+                        <li>测试点生成软件正式发布</li>
+                        <li>支持基本的测试点文件生成功能</li>
+                        <li>提供简单易用的用户界面</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -67,22 +468,26 @@
         <div class="footer-content">
             <div class="footer-sections">
                 <div class="footer-section">
-                    <h3>关于我们</h3>
-                    <p>测试点生成软件致力于为用户提供高效、便捷的测试点生成解决方案。</p>
+                    <h3><i class="fas fa-info-circle"></i> 关于本站</h3>
+                    <p></p>
                 </div>
                 <div class="footer-section">
-                    <h3>快速链接</h3>
+                    <h3><i class="fas fa-link"></i> 快速链接</h3>
                     <ul>
-                        <li><a href="#introduce">介绍</a></li>
-                        <li><a href="#overview">概览</a></li>
-                        <li><a href="#support">支持我们</a></li>
-                        <li><a href="update">更新日志</a></li>
+                        <li><a href="introduce"><i class="fas fa-angle-right"></i> 介绍</a></li>
+                        <li><a href="overview"><i class="fas fa-angle-right"></i> 概览</a></li>
+                        <li><a href="support"><i class="fas fa-angle-right"></i> 支持我们</a></li>
+                        <li><a href="update"><i class="fas fa-angle-right"></i> 更新日志</a></li>
+                        <li><a href="help.zhengddzz.fun" target="_blank"><i class="fas fa-angle-right"></i> 帮助文档</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>联系我们</h3>
-                    <p>Email: zhegddzz@outlook.com</p>
-                    <p>QQ: 2032462134</p>
+                    <h3><i class="fas fa-envelope"></i> 联系我们</h3>
+                    <div class="social-icons">
+                        <a href="https://github.com/zhengddzz" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
+                        <a href="https://qm.qq.com/cgi-bin/qm/qr?k=DXG_xYkcX2-Ca6MYq5XhFVqHA8JkrdjI&jump_from=webapi&authKey=weMqBduqRVOOh9uTdVtxL2E3EMFv7u8AwWOgscNZr3jgXe2IowQZN32W+/6eNwWU" target="_blank" class="social-icon"><i class="fab fa-qq"></i></a>
+                        <a href="mailto:zhengddzz@outlook.com" target="_blank" class="social-icon"><i class="fas fa-envelope"></i></a>
+                    </div>
                 </div>
             </div>
             <div class="stats-container">
@@ -104,26 +509,5 @@
             </div>
         </div>
     </footer>
-
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const toggleBtns = document.querySelectorAll('.toggle-btn');
-        
-        toggleBtns.forEach((btn, index) => {
-            const list = btn.closest('.changelog-content').querySelector('.changelog-list');
-            
-            // 默认只显示最新版本的详细信息
-            if (index === 0) {
-                list.classList.remove('collapsed');
-                btn.textContent = '折叠';
-            }
-            
-            btn.addEventListener('click', function() {
-                list.classList.toggle('collapsed');
-                btn.textContent = list.classList.contains('collapsed') ? '展开' : '折叠';
-            });
-        });
-    });
-    </script>
 </body>
 </html>
