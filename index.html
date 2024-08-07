@@ -158,64 +158,155 @@
         footer {
             background-color: #2c3e50;
             color: #ffffff;
-            padding: 40px 0;
+            padding: 60px 0 30px;
             margin-top: 50px;
         }
+        
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
+        
         .footer-sections {
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
+        
         .footer-section {
             flex: 1;
-            margin-right: 30px;
-            margin-bottom: 20px;
-            min-width: 200px;
+            margin-right: 40px;
+            margin-bottom: 30px;
+            min-width: 250px;
         }
+        
         .footer-section:last-child {
             margin-right: 0;
         }
+        
         .footer-section h3 {
             color: #3498db;
-            font-size: 18px;
-            margin-bottom: 15px;
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
         }
+        
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #3498db;
+        }
+        
         .footer-section ul {
             list-style: none;
             padding: 0;
         }
+        
         .footer-section ul li {
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
+        
         .footer-section ul li a {
-            color: #ffffff;
+            color: #ecf0f1;
             text-decoration: none;
             transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
         }
+        
+        .footer-section ul li a i {
+            margin-right: 10px;
+            font-size: 12px;
+        }
+        
         .footer-section ul li a:hover {
             color: #3498db;
         }
+        
+        .footer-section p {
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        
+        .social-icons {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #34495e;
+            color: #ffffff;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background-color: #3498db;
+            transform: translateY(-3px);
+        }
+        
         .stats-container {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            margin-bottom: 20px;
-            padding: 20px 0;
+            margin-bottom: 30px;
+            padding: 30px 0;
             border-top: 1px solid #34495e;
             border-bottom: 1px solid #34495e;
         }
+        
         .stat-item {
             display: flex;
             align-items: center;
-            margin: 10px 20px;
+            margin: 10px 30px;
+            font-size: 16px;
+            color: #ecf0f1;
+        }
+        
+        .stat-item i {
+            margin-right: 15px;
+            font-size: 24px;
+            color: #3498db;
+        }
+        
+        .copyright {
+            text-align: center;
             font-size: 14px;
-            color: #ffffff;
+            color: #bdc3c7;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .footer-sections {
+                flex-direction: column;
+            }
+            
+            .footer-section {
+                margin-right: 0;
+                margin-bottom: 40px;
+            }
+            
+            .stats-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .stat-item {
+                margin: 15px 0;
+            }
         }
         .stat-item i {
             margin-right: 10px;
@@ -295,22 +386,28 @@
         <div class="footer-content">
             <div class="footer-sections">
                 <div class="footer-section">
-                    <h3>关于我们</h3>
-                    <p>测试点生成软件致力于为用户提供高效、便捷的测试点生成解决方案。</p>
+                    <h3><i class="fas fa-info-circle"></i> 关于我们</h3>
+                    <p>测试点生成软件致力于为用户提供高效、便捷的测试点生成解决方案。我们不断创新，为您的工作提供更好的支持。</p>
                 </div>
                 <div class="footer-section">
-                    <h3>快速链接</h3>
+                    <h3><i class="fas fa-link"></i> 快速链接</h3>
                     <ul>
-                        <li><a href="#introduce">介绍</a></li>
-                        <li><a href="#overview">概览</a></li>
-                        <li><a href="#support">支持我们</a></li>
-                        <li><a href="update">更新日志</a></li>
+                        <li><a href="#introduce"><i class="fas fa-angle-right"></i> 介绍</a></li>
+                        <li><a href="#overview"><i class="fas fa-angle-right"></i> 概览</a></li>
+                        <li><a href="#support"><i class="fas fa-angle-right"></i> 支持我们</a></li>
+                        <li><a href="update"><i class="fas fa-angle-right"></i> 更新日志</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>联系我们</h3>
-                    <p>Email: zhegddzz@outlook.com</p>
-                    <p>QQ: 2032462134</p>
+                    <h3><i class="fas fa-envelope"></i> 联系我们</h3>
+                    <p><i class="fas fa-envelope"></i> Email: zhegddzz@outlook.com</p>
+                    <p><i class="fab fa-qq"></i> QQ: 2032462134</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                    </div>
                 </div>
             </div>
             <div class="stats-container">
