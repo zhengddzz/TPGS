@@ -12,13 +12,16 @@
             --primary-color: #3498db;
             --secondary-color: #2c3e50;
             --hover-color: #2980b9;
+            --bg-color: #f0f2f5;
+            --text-color: #333;
         }
         body {
             font-family: 'Roboto', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f2f5;
-            color: #333;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
         }
         .navbar {
             position: fixed;
@@ -394,6 +397,25 @@
             position: absolute;
             left: 0;
         }
+        。dark-mode {
+            --primary-color: #58a6ff;
+            --secondary-color: #1f2937;
+            --hover-color: #3b82f6;
+            --bg-color: #0d1117;
+            --text-color: #c9d1d9;
+        }
+        。mode-switch {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        。mode-switch:hover {
+            color: var(--primary-color);
+        }
     </style>
 </head>
 <body>
@@ -509,5 +531,18 @@
             </div>
         </div>
     </footer>
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const modeIcon = document.querySelector('.mode-switch i');
+            if (document.body.classList.contains('dark-mode')) {
+                modeIcon.classList.remove('fa-moon');
+                modeIcon.classList.add('fa-sun');
+            } else {
+                modeIcon.classList.remove('fa-sun');
+                modeIcon.classList.add('fa-moon');
+            }
+        }
+    </script>
 </body>
 </html>
