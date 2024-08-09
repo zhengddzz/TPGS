@@ -248,6 +248,24 @@
             font-style: italic;
             color: #666;
         }
+        #downloadStatus {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            display: none;
+        }
+        #downloadStatus.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        #downloadStatus.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
     </style>
 </head>
 <body>
@@ -294,7 +312,12 @@
             <div class="footer-sections">
                 <div class="footer-section">
                     <h3><i class="fas fa-info-circle"></i> 关于本站</h3>
-                    <p></p>
+                    <ul>
+                        <li><a href="https://github.com/zhengddzz/TPGS/discussions/categories/1-%E5%85%AC%E5%91%8A" target="_blank"><i class="fas fa-angle-right"></i> 公告 </a></li>
+                        <li><a href="https://github.com/zhengddzz/TPGS/discussions/categories/2-bug%E5%8F%8D%E9%A6%88" target="_blank"><i class="fas fa-angle-right"></i> bug反馈 </a></li>
+                        <li><a href="https://github.com/zhengddzz/TPGS/discussions/categories/3-%E4%BD%A0%E9%97%AE%E6%88%91%E7%AD%94" target="_blank"><i class="fas fa-angle-right"></i> 你问我答 </a></li>
+                        <li><a href="https://github.com/zhengddzz/TPGS/discussions/categories/4-%E6%8A%95%E7%A5%A8" target="_blank"><i class="fas fa-angle-right"></i> 新功能投票 </a></li>
+                    </ul>
                 </div>
                 <div class="footer-section">
                     <h3><i class="fas fa-link"></i> 快速链接</h3>
@@ -335,30 +358,41 @@
         </div>
     </footer>
 
-    <script>
+   <script>
         document.addEventListener('DOMContentLoaded', function() {
             const downloadButton = document.getElementById('downloadButton');
+            const downloadStatus = document.getElementById('downloadStatus');
             
             // 设置下载文件的URL（请替换为实际的下载链接）
-            const downloadUrl = 'https://tpgs.zhengddzz.fun/s.exe';
+            const downloadUrl = 'https://example.com/path/to/your/software.zip';
             
             function startDownload() {
-                // 创建一个隐藏的<a>元素来触发下载
-                const downloadLink = document.createElement('a');
-                downloadLink.href = downloadUrl;
-                downloadLink.download = '测试点生成软件_windows_v0.1.0.exe'; // 设置下载文件名
-                
-                // 将链接添加到文档中
-                document.body.appendChild(downloadLink);
-                
-                // 模拟点击链接
-                downloadLink.click();
-                
-                // 从文档中移除链接
-                document.body.removeChild(downloadLink);
-                
-                // 可选：显示下载开始的消息
-                alert('下载已开始，请稍候...');
+                try {
+                    // 创建一个隐藏的<a>元素来触发下载
+                    const downloadLink = document.createElement('a');
+                    downloadLink.href = downloadUrl;
+                    downloadLink.download = '测试点生成软件_v0.1.0.zip'; // 设置下载文件名
+                    
+                    // 将链接添加到文档中
+                    document.body.appendChild(downloadLink);
+                    
+                    // 模拟点击链接
+                    downloadLink.click();
+                    
+                    // 从文档中移除链接
+                    document.body.removeChild(downloadLink);
+                    
+                    // 显示下载成功状态
+                    downloadStatus.textContent = '下载已开始，请检查您的下载文件夹。';
+                    downloadStatus.className = 'success';
+                    downloadStatus.style.display = 'block';
+                } catch (error) {
+                    // 显示下载失败状态
+                    downloadStatus.textContent = '下载失败，请稍后重试或联系支持。';
+                    downloadStatus.className = 'error';
+                    downloadStatus.style.display = 'block';
+                    console.error('下载错误:', error);
+                }
             }
 
             // 页面加载完成后自动开始下载
